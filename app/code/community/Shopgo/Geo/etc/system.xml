@@ -1,0 +1,147 @@
+<config>
+	<tabs>
+		<shopgo translate="label">
+			<label>Shopgo Extensions</label>
+			<sort_order>205</sort_order>
+		</shopgo>
+	</tabs>
+	<sections>
+		<geo translate="label" module="geo">
+			<class>separator-top</class>
+			<label>Shopgo Geo</label>
+			<tab>shopgo</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General Configuration</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enable Module</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						<alwaysshow translate="label">
+							<label>Always show</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Force the shipping notification to ignore cookies and always show.</comment>
+						</alwaysshow>
+						<geo_debug translate="label">
+							<label>Debug</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>When debug enabled it will push geoData object inside the console.</comment>
+						</geo_debug>
+						<jquery translate="label">
+                            <label>Enable JQuery</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <comment>Add JQuery library to the HTML head if there is no one already added.</comment>
+                        </jquery>
+                        <geo_easing_effect>
+    						<label>Easing effect</label>
+    						<frontend_type>select</frontend_type>
+    						<source_model>Shopgo_Geo_Model_Adminhtml_System_Config_Source_Easing</source_model>
+    						<sort_order>5</sort_order>
+    						<show_in_default>1</show_in_default>
+   							<show_in_website>1</show_in_website>
+   							<show_in_store>1</show_in_store>
+   							<comment>The animation effect when showing the notification.</comment>
+						</geo_easing_effect>
+						<geo_cookie_lifetime>
+    						<label>Cookie lifetime</label>
+    						<frontend_type>select</frontend_type>
+    						<source_model>Shopgo_Geo_Model_Adminhtml_System_Config_Source_Lifetime</source_model>
+    						<sort_order>6</sort_order>
+    						<show_in_default>1</show_in_default>
+   							<show_in_website>1</show_in_website>
+   							<show_in_store>1</show_in_store>
+   							<comment>Show the notification once every NO. day(s).</comment>
+						</geo_cookie_lifetime>
+						<geo_specificcountry translate="label">
+                            <label>Ship to Specific Countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>7</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <comment>Select the countries where you want to show the shipping notification.</comment>
+                        </geo_specificcountry>
+                        <geo_synchronize translate="label comment">
+							<frontend_type>button</frontend_type>
+							<frontend_model>geo/system_config_synchronize</frontend_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>If you synchronize GeoIP database too often you may be banned for several hours.</comment>
+						</geo_synchronize>
+						<geo_status translate="label">
+							<label>GeoIP Database Downloaded</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>geo/system_config_status</frontend_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</geo_status>
+					</fields>
+				</general>
+			</groups>
+		</geo>
+		<!-- <general>
+			<groups>
+				<country>
+					<fields>
+						<geo_status translate="label">
+							<label>GeoIP Database Downloaded</label>
+							<frontend_type>label</frontend_type>
+							<frontend_model>geo/system_config_status</frontend_model>
+							<sort_order>7000</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</geo_status>
+						<geo_synchronize translate="label comment">
+							<frontend_type>button</frontend_type>
+							<frontend_model>geo/system_config_synchronize</frontend_model>
+							<sort_order>7010</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>If you synchronize GeoIP database too often you may be banned for several hours.</comment>
+						</geo_synchronize>
+					</fields>
+				</country>
+			</groups>
+		</general> -->
+	</sections>
+</config>

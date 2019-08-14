@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Shopgo_Geo>
+            <version>0.0.1</version>
+        </Shopgo_Geo>
+    </modules>
+    <frontend>
+        <secure_url>
+            <geo>/geo</geo>
+        </secure_url>
+        <routers>
+            <geo>
+                <use>standard</use>
+                <args>
+                    <module>Shopgo_Geo</module>
+                    <frontName>geo</frontName>
+                </args>
+            </geo>
+            
+        </routers>
+        <layout>
+            <updates>
+                <ec>
+                    <file>shopgo/geo.xml</file>
+                </ec>
+            </updates>
+        </layout>
+        <events>
+            
+        </events>
+        <translate>
+            <modules>
+                <Shopgo_Geo>
+                    <files>
+                        <default>Shopgo_Geo.csv</default>
+                    </files>
+                </Shopgo_Geo>
+            </modules>
+        </translate>
+    </frontend>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <geo>
+                    <file>shopgo/geo.xml</file>
+                </geo>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <models>
+            <geo>
+                <class>Shopgo_Geo_Model</class>
+                
+            </geo>
+            
+        </models>
+        <resources>
+            <geo_setup>
+                <setup>
+                    <module>Shopgo_Geo</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </geo_setup>
+            <geo_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </geo_write>
+            <geo_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </geo_read>
+        </resources>
+        <blocks>
+            <geo>
+                <class>Shopgo_Geo_Block</class>
+            </geo>
+           
+            
+        </blocks>
+        <helpers>
+            <geo>
+                <class>Shopgo_Geo_Helper</class>
+            </geo>
+        </helpers>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <geo>
+                        <type>singleton</type>
+                        <class>geo/observer</class>
+                        <method>controllerFrontInitBefore</method>
+                    </geo>
+                </observers>
+            </controller_front_init_before>
+        </events>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <shopgo_geo before="Mage_Adminhtml">Shopgo_Geo_Adminhtml</shopgo_geo>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <crontab>
+        <jobs>
+            <geo_update>
+                <schedule><cron_expr>0 0 1 * *</cron_expr></schedule>
+                <run><model>geo/cron::run</model></run>
+            </geo_update>
+        </jobs>
+    </crontab>
+    <default>
+        <geo>
+            <general>
+                <active>1</active>
+                
+            </general>
+            
+        </geo>
+    </default>
+</config>

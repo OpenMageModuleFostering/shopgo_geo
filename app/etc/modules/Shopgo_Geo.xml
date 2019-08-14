@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Shopgo_Geo>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                 
+             </depends>
+        </Shopgo_Geo>
+    </modules>
+</config>

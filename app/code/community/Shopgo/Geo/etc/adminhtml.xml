@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+	<!-- <menu>
+		<shopgo translate="title" module="geo">
+			<title>Shopgo</title>
+			<sort_order>100</sort_order>
+			<children>
+				<geo translate="title" module="geo">
+					<title>Geo Module</title>
+					<sort_order>0</sort_order>
+					<children>
+						<configuration>
+							<title>Configuration</title>
+							<sort_order>1</sort_order>
+							<action>adminhtml/system_config/edit/section/geo</action>
+						</configuration>
+					</children>
+				</geo>
+			</children>
+		</shopgo>
+	</menu> -->
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<geo translate="title">
+										<title>Geo Module</title>
+										<sort_order>10</sort_order>
+									</geo>
+								</children>
+							</config>
+						</children>
+					</system>
+					<shopgo translate="title" module="geo">
+						<title>Shopgo</title>
+						<sort_order>71</sort_order>
+						<children>
+							<geo translate="title">
+								<title>Geo Module</title>
+								<children>
+									<configuration translate="title">
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+									</configuration>
+								</children>
+							</geo>
+						</children>
+					</shopgo>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

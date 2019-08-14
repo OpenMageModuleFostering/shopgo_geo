@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    	<reference name="head">
+            <action method="addItem"><type>skin_css</type><file>shopgo/geo/css/style.css</file></action>
+            <action method="addItem"><type>skin_css</type><file>shopgo/geo/css/flag-icon.min.css</file></action>
+            <action method="addItem" ifconfig="geo/general/jquery"><type>skin_js</type><file>shopgo/geo/js/jquery-2.1.0.min.js</file></action>
+            <action method="addItem" ifconfig="geo/general/jquery"><type>skin_js</type><file>shopgo/geo/js/jquery-no-conflict.js</file></action>
+            <action method="addItem"><type>skin_js</type><file>shopgo/geo/js/jquery.easing.1.3.js</file></action>
+            <action method="addItem"><type>skin_js</type><file>shopgo/geo/js/jquery.bouncebox.1.0.js</file></action>
+        </reference>
+    	<reference name="after_body_start">
+            <block type="geo/geo" name="geo_header" before="-" template="shopgo/geo/geo_header.phtml"/>
+        </reference>
+    	<reference name="footer">
+            <block type="geo/geo" name="geo_footer" after="-" template="shopgo/geo/geo_footer.phtml"/>
+        </reference>
+    </default>
+</layout>

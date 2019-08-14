@@ -1,0 +1,56 @@
+<?php 
+	$geoIP = Mage::getSingleton('geo/country');
+	$currentCountryCode = $geoIP->getCountry();
+	$allowedCountries = explode(',', Mage::getStoreConfig('geo/general/geo_specificcountry'));
+	$cookie = Mage::getSingleton('core/cookie');
+	$cookie->set('geo_shipping_notification', '1' ,time()+86400,'/');
+	$countryName = Mage::app()->getLocale()->getCountryTranslation($currentCountryCode);
+?>
+
+<?php if(Mage::getStoreConfig('geo/general/geo_debug')) { ?>
+<script type="text/javascript">
+	var geoData = {
+		remoteAddr: '<?php echo Mage::helper('core/http')->getRemoteAddr(); ?>',
+		currentCountryCode: '<?php echo $currentCountryCode; ?>',
+		allowedCountries: <?php echo json_encode($allowedCountries); ?>,
+		countryName: '<?php echo $countryName; ?>'
+	}
+</script>
+<?php } ?>
+
+<?php if(!empty($countryName)) { ?>
+	<?php if(in_array($currentCountryCode, $allowedCountries)) { ?>
+<div id="box">
+	<p>
+		<!-- <b>Title!</b> -->
+		<?php echo $this->__('We are shipping to '); ?><span class="flag-icon flag-icon-<?php echo mb_strtolower($currentCountryCode); ?> large-flag vlm" title="<?php echo $countryName; ?>"></span>
+	</p>
+</div>
+
+<script type="text/javascript">
+	(function($) {
+		$().ready(function() {
+			$('#box').bounceBox();
+			<?php 
+			//
+			if(Mage::getStoreConfig('geo/general/alwaysshow')) {
+				$cookie->set('geo_shipping_notification', '0' ,time()+86400 * Mage::getStoreConfig('geo/general/geo_cookie_lifetime'),'/');
+			}
+
+			if($cookie->get('geo_shipping_notification') != 1) {
+			?>
+			//$('#box').bounceBoxToggle();
+			setTimeout(function(){
+				$('#box').bounceBoxShow({
+					easing: '<?php echo Mage::getStoreConfig('geo/general/geo_easing_effect'); ?>'
+				});
+			}, 1000);
+			setTimeout(function(){
+				$('#box').bounceBoxHide();
+			}, 5000);
+			<?php } ?>
+		});
+	})(jQuery);
+</script>
+<?php } ?>
+<?php } ?>
