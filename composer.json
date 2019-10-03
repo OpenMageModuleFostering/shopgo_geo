@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Shopgo_Geo",
+    "name": "OpenMageModuleFostering\/Shopgo_Geo",
     "type": "magento-module",
     "license": "MIT",
     "homepage": "",
     "description": "Shopgo Geo first release.",
     "authors": [
-    {
-        "name": "Moe",
-        "email": "moe@shopgo.me"
-    }
-],
+        {
+            "name": "Moe",
+            "email": "moe@shopgo.me"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
